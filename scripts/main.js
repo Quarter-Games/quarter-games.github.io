@@ -23,8 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
         games.forEach(game => {
             const card = document.createElement('div');
             card.className = 'game-card';
+            
+            // Define standard placeholder SVG via data URI
+            const placeholderImg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='200'><rect width='100%' height='100%' fill='%23444'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23888' font-family='sans-serif' font-size='20'>No Image</text></svg>";
+            const imgSrc = game.thumbnail ? game.thumbnail : placeholderImg;
+
             card.innerHTML = `
-                <img src="${game.thumbnail}" alt="${game.title} Thumbnail" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100\\' height=\\'100\\'><rect width=\\'100\\' height=\\'100\\' fill=\\'%23444\\'/></svg>'">
+                <img src="${imgSrc}" alt="${game.title} Thumbnail" onerror="this.onerror=null; this.src='${placeholderImg}';">
                 <div class="game-info">
                     <h3>${game.title}</h3>
                     <p>${game.shortDescription}</p>
@@ -59,23 +64,26 @@ document.addEventListener('DOMContentLoaded', () => {
         let platformsHtml = data.platforms.map(p => `<span class="platform-tag">${p}</span>`).join('');
         
         let mediaHtml = '';
-        if (data.videoType === 'youtube') {
+        const placeholderBanner = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='300'><rect width='100%' height='100%' fill='%23444'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23888' font-family='sans-serif' font-size='24'>No Media Available</text></svg>";
+
+        if (data.videoType === 'youtube' && data.videoUrl) {
             mediaHtml = `
                 <div class="video-container">
                     <iframe src="${data.videoUrl}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             `;
-        } else if (data.videoType === 'local') {
+        } else if (data.videoType === 'local' && data.videoUrl) {
             mediaHtml = `
                 <div class="video-container">
                     <video controls>
-                        <source src="${data.videoUrl}" type="video/mp4">
+                        <source src="${data.videoUrl}" type="video/mp4" onerror="this.parentElement.outerHTML='<img src=&quot;${placeholderBanner}&quot; alt=&quot;Error loading local video&quot;>'">
                         Your browser does not support the video tag.
                     </video>
                 </div>
             `;
         } else {
-            mediaHtml = `<img src="${data.banner}" alt="${data.title} Banner" onerror="this.style.display='none'">`;
+            const bannerSrc = data.banner ? data.banner : placeholderBanner;
+            mediaHtml = `<img src="${bannerSrc}" alt="${data.title} Banner" onerror="this.onerror=null; this.src='${placeholderBanner}';">`;
         }
 
         gameDetailsContainer.innerHTML = `
