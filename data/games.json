@@ -1,16 +1,20 @@
 [
     {
-        "id": "project-nebula",
-        "title": "Project Nebula",
+        "id": "idle-zoo-world",
+        "title": "Idle Zoo World",
         "shortDescription": "A sprawling sci-fi RPG with deep exploration.",
-        "thumbnail": "assets/project-nebula-thumb.jpg",
-        "dataFile": "data/project-nebula.json"
+        "thumbnail": "assets/idle-zoo-world-thumb.png",
+        "dataFile": "data/idle-zoo-world.json",
+        "pageUrl": "idle-zoo-world.html",
+        "platforms": ["PC", "PlayStation"]
     },
     {
         "id": "shadow-run",
         "title": "Shadow Run",
         "shortDescription": "Fast-paced stealth action platformer.",
         "thumbnail": "assets/shadow-run-thumb.jpg",
-        "dataFile": "data/shadow-run.json"
+        "dataFile": "data/shadow-run.json",
+        "pageUrl": "shadow-run.html",
+        "platforms": ["PC", "Nintendo Switch"]
     }
 ]

@@ -1,0 +1,12 @@
+{
+    "id": "idle-zoo-world",
+    "title": "Idle Zoo World",
+    "genre": "Action RPG / Sci-Fi",
+    "releaseDate": "Q4 2026",
+    "banner": "assets/idle-zoo-world-banner.png",
+    "fullDescription": "Embark on an epic journey across the cosmos in Idle Zoo World. Customise your ship, recruit a diverse crew, and make choices that will shape the fate of entire star systems. With deep tactical combat and an expansive branching narrative, no two playthroughs are the same.",
+    "platforms": ["PC", "PlayStation"],
+    "website": "#",
+    "videoType": "youtube",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+}

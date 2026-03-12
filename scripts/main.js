@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(games => {
-            renderGameCards(games);
+            if (gamesContainer) renderGameCards(games);
         })
         .catch(err => {
             console.error(err);
-            gamesContainer.innerHTML = '<p>Error loading games.</p>';
+            if (gamesContainer) gamesContainer.innerHTML = '<p>Error loading games.</p>';
         });
 
     function renderGameCards(games) {
@@ -58,33 +58,61 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderGameDetails(data) {
         let platformsHtml = data.platforms.map(p => `<span class="platform-tag">${p}</span>`).join('');
         
+        let mediaHtml = '';
+        if (data.videoType === 'youtube') {
+            mediaHtml = `
+                <div class="video-container">
+                    <iframe src="${data.videoUrl}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            `;
+        } else if (data.videoType === 'local') {
+            mediaHtml = `
+                <div class="video-container">
+                    <video controls>
+                        <source src="${data.videoUrl}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            `;
+        } else {
+            mediaHtml = `<img src="${data.banner}" alt="${data.title} Banner" onerror="this.style.display='none'">`;
+        }
+
         gameDetailsContainer.innerHTML = `
-            <div class="modal-body">
-                <h2>${data.title}</h2>
-                <div class="modal-meta">
-                    <span><strong>Genre:</strong> ${data.genre}</span>
-                    <span><strong>Release Date:</strong> ${data.releaseDate}</span>
+            <div class="modal-body horizontal-layout">
+                <div class="modal-media">
+                    <h2>${data.title}</h2>
+                    ${mediaHtml}
                 </div>
-                <img src="${data.banner}" alt="${data.title} Banner" onerror="this.style.display='none'">
-                <p>${data.fullDescription}</p>
-                <div class="platforms">
-                    <strong>Available on:</strong><br><br>
-                    ${platformsHtml}
+                <div class="modal-info">
+                    <div class="modal-meta">
+                        <span><strong>Genre:</strong> ${data.genre}</span>
+                        <span><strong>Release Date:</strong> ${data.releaseDate}</span>
+                    </div>
+                    <p>${data.fullDescription}</p>
+                    <div class="platforms">
+                        <strong>Available on:</strong><br><br>
+                        ${platformsHtml}
+                    </div>
+                    <br>
+                    <a href="${data.website}" target="_blank" class="btn primary-btn">Visit Website</a>
                 </div>
-                <br>
-                <a href="${data.website}" target="_blank" class="btn primary-btn">Visit Website</a>
             </div>
         `;
     }
 
     // Modal close behavior
-    closeBtn.addEventListener('click', () => {
-        modal.classList.add('hidden');
-    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            gameDetailsContainer.innerHTML = ''; // Stop video playback
+        });
+    }
 
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.classList.add('hidden');
+            gameDetailsContainer.innerHTML = ''; // Stop video playback
         }
     });
 });

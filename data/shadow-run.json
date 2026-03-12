@@ -6,5 +6,7 @@
     "banner": "assets/shadow-run-banner.jpg",
     "fullDescription": "Master the shadows in this relentless, fast-paced platformer. Move silently and strike from the darkness as you ascend a cyberpunk mega-structure filled with deadly traps and corporate enforcers. Perfect your speedrun times and compete on global leaderboards.",
     "platforms": ["PC", "Nintendo Switch"],
-    "website": "#"
+    "website": "#",
+    "videoType": "local",
+    "videoUrl": "assets/shadow-run-trailer.mp4"
 }
