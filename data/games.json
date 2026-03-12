@@ -1,0 +1,16 @@
+[
+    {
+        "id": "project-nebula",
+        "title": "Project Nebula",
+        "shortDescription": "A sprawling sci-fi RPG with deep exploration.",
+        "thumbnail": "assets/project-nebula-thumb.jpg",
+        "dataFile": "data/project-nebula.json"
+    },
+    {
+        "id": "shadow-run",
+        "title": "Shadow Run",
+        "shortDescription": "Fast-paced stealth action platformer.",
+        "thumbnail": "assets/shadow-run-thumb.jpg",
+        "dataFile": "data/shadow-run.json"
+    }
+]

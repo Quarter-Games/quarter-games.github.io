@@ -1,9 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quarter Games</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <h1>hello world</h1>
-    <p>this is a test</p>
+    <header class="static-header">
+        <nav class="nav-container">
+            <div class="logo">Quarter Games</div>
+            <ul class="nav-links">
+                <li><a href="#games">Games</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="hero" class="vertical-section">
+            <div class="section-content">
+                <h1>Welcome to Quarter Games</h1>
+                <p>Crafting immersive and unforgettable digital experiences.</p>
+                <a href="#games" class="btn primary-btn">Explore Our Games</a>
+            </div>
+        </section>
+
+        <section id="games" class="vertical-section">
+            <div class="section-content">
+                <h2>Our Games</h2>
+                <div id="games-container" class="games-grid">
+                    <!-- Game cards will be injected here via JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="vertical-section">
+            <div class="section-content">
+                <h2>About Us</h2>
+                <p>We are an independent game development studio dedicated to creating high-quality, story-driven games that push the boundaries of what's possible. Founded by industry veterans, Quarter Games focuses on bringing unique worlds to life.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="vertical-section">
+            <div class="section-content">
+                <h2>Contact Us</h2>
+                <p>Have a question or want to work with us? Reach out!</p>
+                <a href="mailto:hello@quartergames.com" class="btn outline-btn">Email Us</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Individual Game Details -->
+    <div id="game-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="game-details">
+                <!-- Data from individual game JSON will load here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
 </body>
+</html>
