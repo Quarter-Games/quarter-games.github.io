@@ -12,7 +12,7 @@
         "id": "shadow-run",
         "title": "Shadow Run",
         "shortDescription": "Fast-paced stealth action platformer.",
-        "thumbnail": "assets/shadow-run-thumb.jpg",
+        "thumbnail": "assets/idle-zoo-world-banner.png",
         "dataFile": "data/shadow-run.json",
         "pageUrl": "shadow-run.html",
         "platforms": ["PC", "Nintendo Switch"]
