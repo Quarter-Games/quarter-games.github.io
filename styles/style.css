@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'LinLibertine_RI';
+    src: url('../LinLibertine_RI.ttf') format('truetype');
+}
+
 :root {
     --primary-color: #ff4757;
     --bg-dark: #1e272e;
@@ -100,8 +105,9 @@ body, html {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 8rem;
     margin-bottom: 1rem;
+    letter-spacing: 0.1em; /* Added spacing between letters */
 }
 
 h2 {
